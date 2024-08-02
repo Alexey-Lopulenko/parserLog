@@ -45,6 +45,14 @@
 # Ignore any additional config files
 /env.php
 
+# Docker-specific files
+docker-compose.override.yml
+docker-compose.local.yml
+docker-compose.prod.yml
+.docker/
+.dockerignore
+
+
 # MacOS specific files
 .DS_Store
 
