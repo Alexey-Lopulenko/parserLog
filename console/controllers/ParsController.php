@@ -30,6 +30,15 @@ class ParsController extends Controller
                 ->one();
 
             if ($file) {
+                $startOfYesterday = strtotime('yesterday midnight');
+                $endOfYesterday = strtotime('today midnight') - 1;
+
+                if ($file->updated_at >= $startOfYesterday && $file->updated_at <= $endOfYesterday) {
+                    echo "The timestamp is from yesterday.\n";
+                    $file->last_pars_row = 0;
+                    $file->save();
+                }
+
                 $lastRow = $file->last_pars_row;
             } else {
                 $file = new File();
